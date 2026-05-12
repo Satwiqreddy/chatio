@@ -1,58 +1,76 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #f8fafc;
-  --foreground: #020617;
-  --accent: #22c55e;
-  --accent-foreground: #ffffff;
+  --bg: #f0f2f5;
+  --white: #ffffff;
+  --primary: #25d366;
+  --primary-dark: #128c7e;
+  --primary-light: #dcf8c6;
+  --text-dark: #111b21;
+  --text-mid: #3b4a54;
+  --text-light: #667781;
+  --border: #e9edef;
+  --hover: #f5f6f6;
+  --sent: #d9fdd3;
+  --received: #ffffff;
+  --sidebar-bg: #ffffff;
+  --header-bg: #f0f2f5;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #cdd1d4;
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #adb5bd;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+/* WhatsApp-style chat background */
+.chat-bg {
+  background-color: #efeae2;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+.msg-sent {
+  background-color: var(--sent);
+  border-radius: 7.5px 7.5px 0 7.5px;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.msg-received {
+  background-color: var(--received);
+  border-radius: 7.5px 7.5px 7.5px 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.sidebar-item-active {
+  background-color: #f0f2f5;
+}
+
+.sidebar-item:hover {
+  background-color: #f5f6f6;
+}
+
+input:focus {
+  outline: none;
 }
