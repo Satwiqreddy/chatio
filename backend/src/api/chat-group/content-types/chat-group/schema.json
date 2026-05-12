@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_groups",
+  "info": {
+    "singularName": "chat-group",
+    "pluralName": "chat-groups",
+    "displayName": "ChatGroup"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "isPrivate": {
+      "type": "boolean",
+      "default": false
+    },
+    "members": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
