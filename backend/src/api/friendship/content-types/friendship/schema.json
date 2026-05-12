@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "friendships",
+  "info": {
+    "singularName": "friendship",
+    "pluralName": "friendships",
+    "displayName": "Friendship"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "user1": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "user2": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
