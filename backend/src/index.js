@@ -51,7 +51,7 @@ module.exports = {
 
     const io = new Server(strapi.server.httpServer, {
       cors: {
-        origin: 'http://localhost:3000',
+        origin: ['http://localhost:3000', 'https://chatio-pearl.vercel.app'],
         methods: ['GET', 'POST'],
         credentials: true,
       },
