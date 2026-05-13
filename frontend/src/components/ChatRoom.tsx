@@ -195,7 +195,7 @@ export default function ChatRoom() {
         {/* Sidebar Header */}
         <div className="bg-[#f0f2f5] px-4 py-3 flex items-center justify-between border-b border-[#e9edef]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#25d366] rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-10 h-10 bg-[#2b6ef5] rounded-full flex items-center justify-center text-white font-bold text-lg">
               {username.charAt(0).toUpperCase()}
             </div>
             <span className="font-semibold text-[#111b21] text-sm">{username}</span>
@@ -240,7 +240,7 @@ export default function ChatRoom() {
                   onClick={() => joinChat(roomId, true)}
                   className={`flex items-center px-3 py-3 cursor-pointer border-b border-[#f0f2f5] transition ${isActive ? 'bg-[#f0f2f5]' : 'hover:bg-[#f5f6f6]'}`}
                 >
-                  <div className="w-12 h-12 bg-[#25d366] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shrink-0">
+                  <div className="w-12 h-12 bg-[#2b6ef5] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shrink-0">
                     <Users className="w-6 h-6" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -276,17 +276,17 @@ export default function ChatRoom() {
                   className={`flex items-center px-3 py-3 cursor-pointer border-b border-[#f0f2f5] transition ${isActive ? 'bg-[#f0f2f5]' : 'hover:bg-[#f5f6f6]'}`}
                 >
                   <div className="relative mr-3 shrink-0">
-                    <div className="w-12 h-12 bg-[#128c7e] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 bg-[#1a4fc4] rounded-full flex items-center justify-center text-white font-bold text-lg">
                       {friend.charAt(0).toUpperCase()}
                     </div>
                     {isOnline && (
-                      <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#25d366] border-2 border-white rounded-full"></span>
+                      <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#2b6ef5] border-2 border-white rounded-full"></span>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-[#111b21] text-[15px]">{friend}</span>
-                      {isOnline && <span className="text-xs text-[#25d366] font-medium">online</span>}
+                      {isOnline && <span className="text-xs text-[#2b6ef5] font-medium">online</span>}
                     </div>
                     <p className="text-sm text-[#8696a0] truncate">
                       {isOnline ? 'Active now' : 'Tap to chat'}
@@ -316,9 +316,9 @@ export default function ChatRoom() {
                   onChange={e => setNewFriendName(e.target.value)}
                   placeholder="Username"
                   required
-                  className="w-full border border-[#e9edef] rounded-lg px-4 py-3 text-[#111b21] text-sm focus:border-[#25d366] bg-[#f0f2f5]"
+                  className="w-full border border-[#e9edef] rounded-lg px-4 py-3 text-[#111b21] text-sm focus:border-[#2b6ef5] bg-[#f0f2f5]"
                 />
-                <button type="submit" className="w-full bg-[#25d366] hover:bg-[#22c55e] text-white font-semibold py-3 rounded-lg transition">
+                <button type="submit" className="w-full bg-[#2b6ef5] hover:bg-[#22c55e] text-white font-semibold py-3 rounded-lg transition">
                   Add Friend
                 </button>
               </form>
@@ -343,7 +343,7 @@ export default function ChatRoom() {
                   onChange={e => setNewGroupName(e.target.value)}
                   placeholder="Group name"
                   required
-                  className="w-full border border-[#e9edef] rounded-lg px-4 py-3 text-[#111b21] text-sm focus:border-[#25d366] bg-[#f0f2f5]"
+                  className="w-full border border-[#e9edef] rounded-lg px-4 py-3 text-[#111b21] text-sm focus:border-[#2b6ef5] bg-[#f0f2f5]"
                 />
                 <p className="text-xs font-semibold text-[#667781] uppercase tracking-wider">Add Participants</p>
                 {friends.length === 0 ? (
@@ -358,9 +358,9 @@ export default function ChatRoom() {
                           if (e.target.checked) setSelectedFriendsForGroup(p => [...p, friend]);
                           else setSelectedFriendsForGroup(p => p.filter(f => f !== friend));
                         }}
-                        className="w-4 h-4 accent-[#25d366]"
+                        className="w-4 h-4 accent-[#2b6ef5]"
                       />
-                      <div className="w-9 h-9 bg-[#128c7e] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-9 h-9 bg-[#1a4fc4] rounded-full flex items-center justify-center text-white font-bold text-sm">
                         {friend.charAt(0).toUpperCase()}
                       </div>
                       <span className="text-[#111b21] text-sm">{friend}</span>
@@ -368,7 +368,7 @@ export default function ChatRoom() {
                   ))
                 )}
                 {newGroupName.trim() && selectedFriendsForGroup.length > 0 && (
-                  <button type="submit" className="w-full bg-[#25d366] hover:bg-[#22c55e] text-white font-semibold py-3 rounded-lg transition">
+                  <button type="submit" className="w-full bg-[#2b6ef5] hover:bg-[#22c55e] text-white font-semibold py-3 rounded-lg transition">
                     Create Group
                   </button>
                 )}
@@ -397,16 +397,16 @@ export default function ChatRoom() {
                         if (e.target.checked) setSelectedFriendsForAdd(p => [...p, friend]);
                         else setSelectedFriendsForAdd(p => p.filter(f => f !== friend));
                       }}
-                      className="w-4 h-4 accent-[#25d366]"
+                      className="w-4 h-4 accent-[#2b6ef5]"
                     />
-                    <div className="w-9 h-9 bg-[#128c7e] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-9 h-9 bg-[#1a4fc4] rounded-full flex items-center justify-center text-white font-bold text-sm">
                       {friend.charAt(0).toUpperCase()}
                     </div>
                     <span className="text-[#111b21] text-sm">{friend}</span>
                   </label>
                 ))}
                 {selectedFriendsForAdd.length > 0 && (
-                  <button type="submit" className="w-full bg-[#25d366] text-white font-semibold py-3 rounded-lg transition hover:bg-[#22c55e]">
+                  <button type="submit" className="w-full bg-[#2b6ef5] text-white font-semibold py-3 rounded-lg transition hover:bg-[#22c55e]">
                     Add {selectedFriendsForAdd.length} Member{selectedFriendsForAdd.length > 1 ? 's' : ''}
                   </button>
                 )}
@@ -425,7 +425,7 @@ export default function ChatRoom() {
             <button className="md:hidden p-1 mr-1" onClick={() => setShowMobileChat(false)}>
               <ArrowLeft className="w-5 h-5 text-[#54656f]" />
             </button>
-            <div className="w-10 h-10 bg-[#128c7e] rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-10 h-10 bg-[#1a4fc4] rounded-full flex items-center justify-center text-white font-bold text-lg">
               {getChatInitial()}
             </div>
             <div>
@@ -435,7 +435,7 @@ export default function ChatRoom() {
               {!isGroupChat && (
                 <p className="text-xs text-[#8696a0]">
                   {globalOnline.includes(activeChat) ? (
-                    <span className="text-[#25d366]">online</span>
+                    <span className="text-[#2b6ef5]">online</span>
                   ) : 'offline'}
                 </p>
               )}
@@ -464,11 +464,11 @@ export default function ChatRoom() {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 chat-bg flex flex-col">
+        <div className="flex-1 overflow-y-auto px-3 py-4 chat-bg flex flex-col gap-0.5">
           {currentMessages.length === 0 && (
-            <div className="m-auto text-center">
-              <div className="bg-[#fffde7] text-[#667781] text-sm px-4 py-2 rounded-lg inline-block shadow-sm">
-                🔒 Messages are end-to-end visible only here. Say hi!
+            <div className="m-auto text-center py-8">
+              <div className="bg-[#fffde7] border border-[#f0e68c] text-[#7a6c2e] text-sm px-5 py-2.5 rounded-lg inline-block shadow-sm">
+                🔒 No messages yet — say hello! 👋
               </div>
             </div>
           )}
@@ -476,16 +476,46 @@ export default function ChatRoom() {
           {currentMessages.map((msg, i, arr) => {
             const isMe = msg.sender === username;
             const isFirstInGroup = i === 0 || arr[i - 1].sender !== msg.sender;
+            const isLastInGroup = i === arr.length - 1 || arr[i + 1].sender !== msg.sender;
+            const msgDate = new Date(msg.timestamp);
+            const prevDate = i > 0 ? new Date(arr[i-1].timestamp) : null;
+            const showDate = !prevDate || msgDate.toDateString() !== prevDate.toDateString();
+            const today = new Date();
+            const isToday = msgDate.toDateString() === today.toDateString();
+            const isYesterday = msgDate.toDateString() === new Date(today.setDate(today.getDate()-1)).toDateString();
+            const dateLabel = isToday ? 'Today' : isYesterday ? 'Yesterday' : msgDate.toLocaleDateString([], {day:'numeric', month:'short', year:'numeric'});
+
             return (
-              <div key={i} className={`flex ${isMe ? 'justify-end' : 'justify-start'} ${isFirstInGroup ? 'mt-3' : 'mt-0.5'}`}>
-                <div className={`max-w-[70%] sm:max-w-[55%] px-3 py-2 shadow-sm relative ${isMe ? 'msg-sent' : 'msg-received'}`}>
-                  {!isMe && isGroupChat && isFirstInGroup && (
-                    <p className="text-xs font-semibold text-[#128c7e] mb-1">{msg.sender}</p>
+              <div key={i}>
+                {showDate && (
+                  <div className="flex justify-center my-3">
+                    <span className="bg-white/80 text-[#54656f] text-xs px-3 py-1 rounded-full shadow-sm">{dateLabel}</span>
+                  </div>
+                )}
+                <div className={`flex items-end gap-1.5 ${isMe ? 'justify-end' : 'justify-start'} ${isFirstInGroup ? 'mt-2' : 'mt-0.5'}`}>
+                  {/* Avatar for received messages */}
+                  {!isMe && (
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0 mb-0.5 ${isLastInGroup ? 'bg-[#1a4fc4]' : 'bg-transparent'}`}>
+                      {isLastInGroup ? msg.sender.charAt(0).toUpperCase() : ''}
+                    </div>
                   )}
-                  <p className="text-[15px] text-[#111b21] leading-snug break-words pr-12">{msg.content}</p>
-                  <div className={`absolute bottom-1.5 right-2 flex items-center gap-1 text-[11px] text-[#8696a0]`}>
-                    {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    {isMe && <CheckCheck className="w-3.5 h-3.5 text-[#53bdeb]" />}
+                  <div
+                    className={`max-w-[68%] sm:max-w-[52%] px-3 pt-1.5 pb-5 shadow-sm relative text-[15px] leading-snug break-words ${
+                      isMe
+                        ? 'bg-[#d9fdd3] rounded-tl-2xl rounded-tr-sm rounded-b-2xl'
+                        : 'bg-white rounded-tr-2xl rounded-tl-sm rounded-b-2xl'
+                    }`}
+                  >
+                    {!isMe && isGroupChat && isFirstInGroup && (
+                      <p className="text-xs font-semibold text-[#1a4fc4] mb-0.5">{msg.sender}</p>
+                    )}
+                    <span className="text-[#111b21]">{msg.content}</span>
+                    <div className="absolute bottom-1 right-2 flex items-center gap-1">
+                      <span className="text-[10px] text-[#8696a0]">
+                        {msgDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                      {isMe && <CheckCheck className="w-3 h-3 text-[#53bdeb]" />}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -494,22 +524,24 @@ export default function ChatRoom() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input */}
-        <div className="bg-[#f0f2f5] px-3 py-3 flex items-center gap-2 border-t border-[#e9edef]">
+        {/* Input Bar */}
+        <div className="bg-[#f0f2f5] px-3 py-2.5 flex items-center gap-2 border-t border-[#e9edef]">
+          <button type="button" className="text-[#54656f] p-2 rounded-full hover:bg-[#e9edef] transition text-xl" title="Emoji">😊</button>
           <form onSubmit={handleSendMessage} className="flex-1 flex items-center gap-2">
             <input
               type="text"
               value={inputMessage}
               onChange={e => setInputMessage(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleSendMessage(e as any)}
               placeholder="Type a message"
-              className="flex-1 bg-white rounded-full px-5 py-3 text-[15px] text-[#111b21] placeholder:text-[#8696a0] shadow-sm border border-transparent focus:border-[#25d366] transition"
+              className="flex-1 bg-white rounded-full px-5 py-2.5 text-[15px] text-[#111b21] placeholder:text-[#8696a0] border border-transparent focus:border-[#2b6ef5] transition shadow-sm"
             />
             <button
               type="submit"
               disabled={!inputMessage.trim()}
-              className="w-12 h-12 bg-[#25d366] hover:bg-[#22c55e] disabled:bg-[#adb5bd] text-white rounded-full flex items-center justify-center shadow-sm transition"
+              className="w-11 h-11 bg-[#2b6ef5] hover:bg-[#1a4fc4] disabled:bg-[#d4d4d4] text-white rounded-full flex items-center justify-center shadow transition-all"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-4.5 h-4.5" />
             </button>
           </form>
         </div>

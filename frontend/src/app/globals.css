@@ -2,20 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #f0f2f5;
+  --bg: #f0f4f8;
   --white: #ffffff;
-  --primary: #25d366;
-  --primary-dark: #128c7e;
-  --primary-light: #dcf8c6;
-  --text-dark: #111b21;
-  --text-mid: #3b4a54;
-  --text-light: #667781;
-  --border: #e9edef;
-  --hover: #f5f6f6;
-  --sent: #d9fdd3;
+  --primary: #2b6ef5;
+  --primary-dark: #1a4fc4;
+  --primary-light: #dbeafe;
+  --text-dark: #0d1b2a;
+  --text-mid: #334155;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --hover: #f8fafc;
+  --sent: #dbeafe;
   --received: #ffffff;
   --sidebar-bg: #ffffff;
-  --header-bg: #f0f2f5;
+  --header-bg: #f0f4f8;
 }
 
 * {

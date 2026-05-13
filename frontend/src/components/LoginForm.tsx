@@ -51,7 +51,7 @@ export default function LoginForm() {
     <div className="min-h-screen bg-[#f0f2f5] flex flex-col items-center justify-center px-4">
       {/* Logo */}
       <div className="flex flex-col items-center mb-8">
-        <div className="w-20 h-20 bg-[#25d366] rounded-full flex items-center justify-center mb-3 shadow">
+        <div className="w-20 h-20 bg-[#2b6ef5] rounded-full flex items-center justify-center mb-3 shadow">
           <MessageCircle className="w-10 h-10 text-white" />
         </div>
         <h1 className="text-2xl font-bold text-[#111b21]">ChatIO</h1>
@@ -127,7 +127,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[#25d366] hover:bg-[#22c55e] disabled:bg-gray-300 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
+            className="w-full bg-[#25d366] hover:bg-[#2563eb] disabled:bg-gray-300 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isLogin ? 'Sign In' : 'Create Account')}
           </button>
@@ -137,7 +137,7 @@ export default function LoginForm() {
           {isLogin ? "Don't have an account? " : 'Already have an account? '}
           <button
             onClick={() => { setIsLogin(!isLogin); setError(''); }}
-            className="text-[#128c7e] font-semibold hover:underline"
+            className="text-[#1a4fc4] font-semibold hover:underline"
           >
             {isLogin ? 'Sign up' : 'Sign in'}
           </button>
