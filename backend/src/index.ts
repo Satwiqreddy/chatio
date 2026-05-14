@@ -40,21 +40,29 @@ export default {
       await grantPermission(authRole, 'api::chat-group.chat-group.create');
       await grantPermission(authRole, 'api::chat-group.chat-group.find');
 
-      // 3. Fix existing friendships to show names in dashboard
-    const friendships = await strapi.db.query('api::friendship.friendship').findMany({
-      populate: ['user1', 'user2']
-    });
+    // 3. Fix existing friendships to show names in dashboard
+    try {
+      const friendships = await strapi.documents('api::friendship.friendship').findMany({
+        populate: ['user1', 'user2']
+      });
 
-    for (const f of friendships) {
-      if ((f.user1 && !f.user1_name) || (f.user2 && !f.user2_name)) {
-        await strapi.db.query('api::friendship.friendship').update({
-          where: { id: f.id },
-          data: {
-            user1_name: f.user1?.username || f.user1_name,
-            user2_name: f.user2?.username || f.user2_name
-          }
-        });
+      for (const f of friendships) {
+        const u1 = f.user1?.username;
+        const u2 = f.user2?.username;
+        
+        if (u1 || u2) {
+          await strapi.documents('api::friendship.friendship').update({
+            documentId: f.documentId,
+            data: {
+              user1_name: u1 || f.user1_name,
+              user2_name: u2 || f.user2_name
+            }
+          });
+        }
       }
+      console.log('✅ Friendship names synchronized');
+    } catch (e: any) {
+      console.error('❌ Migration failed:', e.message);
     }
 
     console.log('✅ Permissions bootstrap complete');
