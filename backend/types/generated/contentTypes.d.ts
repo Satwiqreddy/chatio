@@ -484,6 +484,7 @@ export interface ApiFriendshipFriendship extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    combined_name: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

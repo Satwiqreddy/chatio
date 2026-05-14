@@ -27,6 +27,9 @@
     },
     "user2_name": {
       "type": "string"
+    },
+    "combined_name": {
+      "type": "string"
     }
   }
 }

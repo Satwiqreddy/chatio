@@ -7,14 +7,20 @@ export default {
       const user1 = await strapi.db.query('plugin::users-permissions.user').findOne({
         where: { id: data.user1 }
       });
-      if (user1) data.user1_name = user1.username;
+      if (user1) {
+        data.user1_name = user1.username;
+        data.combined_name = `${data.user1_name || ''} ${data.user2_name || ''}`.trim();
+      }
     }
 
     if (data.user2 && !data.user2_name) {
       const user2 = await strapi.db.query('plugin::users-permissions.user').findOne({
         where: { id: data.user2 }
       });
-      if (user2) data.user2_name = user2.username;
+      if (user2) {
+        data.user2_name = user2.username;
+        data.combined_name = `${data.user1_name || ''} ${data.user2_name || ''}`.trim();
+      }
     }
   },
 
@@ -34,6 +40,7 @@ export default {
         where: { id: data.user2 }
       });
       if (user2) data.user2_name = user2.username;
+      data.combined_name = `${data.user1_name || ''} ${data.user2_name || ''}`.trim();
     }
   }
 };
