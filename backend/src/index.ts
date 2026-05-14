@@ -28,49 +28,43 @@ export default {
       const publicRole = 'public';
       const authRole = 'authenticated';
 
-      // Permissions for Friendships
+      // Permissions
       await grantPermission(publicRole, 'api::friendship.friendship.create');
       await grantPermission(authRole, 'api::friendship.friendship.create');
       await grantPermission(authRole, 'api::friendship.friendship.find');
-
-      // Permissions for Messages
       await grantPermission(publicRole, 'api::message.message.create');
       await grantPermission(authRole, 'api::message.message.create');
       await grantPermission(authRole, 'api::message.message.find');
-
-      // Permissions for ChatGroups
       await grantPermission(publicRole, 'api::chat-group.chat-group.create');
       await grantPermission(authRole, 'api::chat-group.chat-group.create');
       await grantPermission(authRole, 'api::chat-group.chat-group.find');
 
-      // 3. Fix existing friendships to show names in dashboard
-      try {
-        const friendships = await strapi.documents('api::friendship.friendship').findMany({
-          populate: ['user1', 'user2']
-        });
+      // ===== FORCE SYNC NAMES FOR DASHBOARD =====
+      console.log('🔄 Starting Friendship name sync...');
+      
+      const friendships = await strapi.db.query('api::friendship.friendship').findMany({
+        populate: { user1: true, user2: true }
+      });
 
-        for (const f of friendships) {
-          const u1 = (f.user1 as any)?.username || f.user1_name;
-          const u2 = (f.user2 as any)?.username || f.user2_name;
-          const combined = `${u1 || ''} ${u2 || ''}`.trim();
-          
-          await strapi.documents('api::friendship.friendship').update({
-            documentId: f.documentId,
-            data: {
-              user1_name: u1,
-              user2_name: u2,
-              combined_name: combined
-            }
-          });
-        }
-        console.log('✅ Friendship names and combined search synchronized');
-      } catch (e: any) {
-        console.error('❌ Migration failed:', e.message);
+      for (const f of friendships) {
+        const u1 = f.user1?.username || 'Unknown';
+        const u2 = f.user2?.username || 'Unknown';
+        const combined = `${u1} ${u2}`.trim();
+        
+        await strapi.documents('api::friendship.friendship').update({
+          documentId: f.documentId,
+          data: {
+            user1_name: u1,
+            user2_name: u2,
+            combined_name: combined
+          }
+        });
       }
 
+      console.log('✅ Synchronization complete');
       console.log('✅ Permissions bootstrap complete');
     } catch (err: any) {
-      console.error('❌ Error setting permissions:', err.message);
+      console.error('❌ Error in bootstrap:', err.message);
     }
   },
 };
