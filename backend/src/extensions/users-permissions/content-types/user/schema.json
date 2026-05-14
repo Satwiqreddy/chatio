@@ -1,17 +1,5 @@
 {
   "attributes": {
-    "friendships1": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::friendship.friendship",
-      "mappedBy": "user1"
-    },
-    "friendships2": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::friendship.friendship",
-      "mappedBy": "user2"
-    },
     "chat_groups": {
       "type": "relation",
       "relation": "manyToMany",

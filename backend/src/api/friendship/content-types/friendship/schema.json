@@ -11,21 +11,9 @@
   },
   "attributes": {
     "user1": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "friendships1"
-    },
-    "user2": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "friendships2"
-    },
-    "user1_name": {
       "type": "string"
     },
-    "user2_name": {
+    "user2": {
       "type": "string"
     },
     "combined_name": {
