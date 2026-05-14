@@ -120,10 +120,10 @@ export default function ChatRoom() {
         const res = await api.get(`/api/messages?filters[room][$eq]=${roomId}&sort=createdAt:asc&pagination[limit]=100`);
         const history = res.data.data.map((m: any) => ({
           id: m.id,
-          content: m.attributes.content,
-          sender: m.attributes.sender || 'Unknown',
-          timestamp: m.attributes.createdAt,
-          room: m.attributes.room
+          content: m.content,
+          sender: m.sender || 'Unknown',
+          timestamp: m.createdAt,
+          room: m.room
         }));
         setMessages(history);
       } catch (err) {
@@ -367,11 +367,17 @@ export default function ChatRoom() {
                     </label>
                   ))
                 )}
-                {newGroupName.trim() && selectedFriendsForGroup.length > 0 && (
-                  <button type="submit" className="w-full bg-[#2b6ef5] hover:bg-[#22c55e] text-white font-semibold py-3 rounded-lg transition">
-                    Create Group
-                  </button>
-                )}
+                <button 
+                  type="submit" 
+                  disabled={!newGroupName.trim() || selectedFriendsForGroup.length === 0}
+                  className={`w-full font-semibold py-3 rounded-lg transition-all mt-4 flex items-center justify-center gap-2 ${
+                    !newGroupName.trim() || selectedFriendsForGroup.length === 0
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                      : 'bg-[#2b6ef5] hover:bg-[#1a4fc4] text-white shadow-md'
+                  }`}
+                >
+                  Create Group {selectedFriendsForGroup.length > 0 && `(${selectedFriendsForGroup.length})`}
+                </button>
               </form>
             </div>
           </div>

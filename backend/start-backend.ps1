@@ -4,5 +4,5 @@ Write-Host "Starting Strapi (Windows-safe mode)..." -ForegroundColor Cyan
 $env:NODE_ENV = "development"
 $env:STRAPI_TELEMETRY_DISABLED = "true"
 
-# Use node to call strapi directly instead of the npm script
+# Use node to call strapi directly
 node node_modules/@strapi/strapi/bin/strapi.js develop --no-open
