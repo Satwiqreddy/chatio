@@ -47,8 +47,8 @@ export default {
       });
 
       for (const f of friendships) {
-        const u1 = f.user1?.username;
-        const u2 = f.user2?.username;
+        const u1 = (f.user1 as any)?.username;
+        const u2 = (f.user2 as any)?.username;
         
         if (u1 || u2) {
           await strapi.documents('api::friendship.friendship').update({
