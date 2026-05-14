@@ -1,10 +1,1 @@
-{
-  "attributes": {
-    "chat_groups": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::chat-group.chat-group",
-      "mappedBy": "members"
-    }
-  }
-}
+{}
