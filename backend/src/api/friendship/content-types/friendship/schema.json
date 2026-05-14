@@ -21,6 +21,12 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "friendships2"
+    },
+    "user1_name": {
+      "type": "string"
+    },
+    "user2_name": {
+      "type": "string"
     }
   }
 }

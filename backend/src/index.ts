@@ -40,7 +40,24 @@ export default {
       await grantPermission(authRole, 'api::chat-group.chat-group.create');
       await grantPermission(authRole, 'api::chat-group.chat-group.find');
 
-      console.log('✅ Permissions bootstrap complete');
+      // 3. Fix existing friendships to show names in dashboard
+    const friendships = await strapi.db.query('api::friendship.friendship').findMany({
+      populate: ['user1', 'user2']
+    });
+
+    for (const f of friendships) {
+      if ((f.user1 && !f.user1_name) || (f.user2 && !f.user2_name)) {
+        await strapi.db.query('api::friendship.friendship').update({
+          where: { id: f.id },
+          data: {
+            user1_name: f.user1?.username || f.user1_name,
+            user2_name: f.user2?.username || f.user2_name
+          }
+        });
+      }
+    }
+
+    console.log('✅ Permissions bootstrap complete');
     } catch (err: any) {
       console.error('❌ Error setting permissions:', err.message);
     }
