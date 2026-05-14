@@ -20,7 +20,8 @@
     "members": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "chat_groups"
     }
   }
 }
