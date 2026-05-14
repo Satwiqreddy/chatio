@@ -42,7 +42,7 @@ export default {
         if (f.user1 && f.user2) {
           await strapi.db.query('api::friendship.friendship').update({
             where: { id: f.id },
-            data: { combined_name: `${f.user1} ${f.user2}` }
+            data: { combined_name: `${f.user1} ${f.user2} ${f.user2} ${f.user1}` }
           });
         }
       }
@@ -122,7 +122,7 @@ export default {
               data: {
                 user1: from,
                 user2: toUsername,
-                combined_name: `${from} ${toUsername}`,
+                combined_name: `${from} ${toUsername} ${toUsername} ${from}`,
               },
             });
           }
