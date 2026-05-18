@@ -1,6 +1,14 @@
 import { io, Socket } from 'socket.io-client';
 
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const getSanitizedApiUrl = () => {
+  let url = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  // Strip trailing slashes and '/admin' suffix to prevent common misconfigurations
+  url = url.replace(/\/$/, '');
+  url = url.replace(/\/admin$/, '');
+  return url;
+};
+
+const API_URL = getSanitizedApiUrl();
 
 let socket: Socket;
 
